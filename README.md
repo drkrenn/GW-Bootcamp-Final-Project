@@ -24,7 +24,7 @@ Due to the diverse set of research questions, this project uses a multimethod ap
 
 
 
-## Data Extraction & Cleaning: (See <code>data_extraction.ipynb</code>)
+## Data Extraction & Cleaning: 
 Using the data sources above, the following files were important to the cleaning and extraction of the data:
 - DataCleaning.ipynb
 - cleaned_data.csv
