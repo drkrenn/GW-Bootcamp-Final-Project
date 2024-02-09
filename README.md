@@ -69,7 +69,7 @@ Finally, we examined age as a predicor. To test this, a dummy coded linear regre
 
 
 
-### RQ3- (See <code>covid_max_min_analysis.ipynb</code>)
+### RQ3- 
 The third question is also a multipart question, looking at the relationships between demographics and crime types. Because of the large number of distinct crime types, these were coded into violent versus non-violent crimes (code for this located in the DataCleaning.ipynb file). The analyses for this question are located in the InferentialAnalysis.ipynb file. 
 First, we examined gender as a predictor. To test this, we used a chi squared test, examining differences between men and women victimization and crime type (either violent or nonviolent). The results revealed a significant effect (χ2= 1167.48, p<0.01). There was a slightly elevated percentage of cases of violent crime for women as victimes (42.75%) versus men (38.69%). 
 Next, we examined race as a predictor. To test this, we used a chi squared test, examining differences between Caucasians and non-Caucasians victimization and crime type (either violent or nonviolent). The results revealed a significant effect (χ2= 20322.93, p<0.01). There was a substantially elevated percentage of cases of violent crime for non-Caucasians as victimes (45.87%) versus Caucasians (26.58%). 
@@ -115,10 +115,10 @@ If research on this topic was to continue, we could see if there are any other c
 
 
 ## Navigation:
-Data Analysis Folder- Contains all of the ipynb files used to calculate descriptive and inferential analyses as well as the data file contained in the "Resources" folder. 
-Data Files Folder- Contains the ipynb file used to pull in and clean the data set as well as a finished data set and a codebook that was used to help recode data. 
-Images Folder- Contains a Powerpoint with all of the images created externally from Tableau to be used in the presentation, most notably the inferential analysis and supervised learning images. There are also image files in here saved from that Powerpoint.
-Project Planning and Reports- Contains the project overview that was created at the beginning of the project.
-Tableau Files Folder- Contains the Tableau workbook that holds our visualizations and final presentation (in the form of a story). 
+-Data Analysis Folder- Contains all of the ipynb files used to calculate descriptive and inferential analyses as well as the data file contained in the "Resources" folder. 
+-Data Files Folder- Contains the ipynb file used to pull in and clean the data set as well as a finished data set and a codebook that was used to help recode data. 
+-Images Folder- Contains a Powerpoint with all of the images created externally from Tableau to be used in the presentation, most notably the inferential analysis and supervised learning images. There are also image files in here saved from that Powerpoint.
+-Project Planning and Reports- Contains the project overview that was created at the beginning of the project.
+-Tableau Files Folder- Contains the Tableau workbook that holds our visualizations and final presentation (in the form of a story). 
 
 
