@@ -78,7 +78,7 @@ Finally, we examined age as a predicor. To test this, a dummy coded linear regre
 
 
 ### RQ4- 
-The final two questions involve the use of logistic regression to attempt to predict various outcomes from all the data in the dataset. 
+The final two questions involve the use of logistic regression and neural networks to attempt to predict various outcomes from all the data in the dataset. 
 The first set of models attempted to predict arrest rates. These models are tested in the ipynb files ArrestLogistic, ArrestLogisticAlt, and ArrestLogisticAlt2. The initial model included area name, victim age, victim sex, victim race, crime type, and address type as predictors. That model yielded low accuracy (0.50). The model yielded relatively high precision, recall, and f1 scores for no arrest made cases (0.91, 1.00, and 0.95), but low scores for arrest made cases (0.56, 0.00, 0.00). 
 Because of the low accuracy, 5 additional models were tested. 
 - The first model was resampled.
@@ -88,9 +88,11 @@ Because of the low accuracy, 5 additional models were tested.
 - The final model used the model above but with resampled data.
 
 In the end, the best model was the first model with resampled data. However, even that yielded lower than desired accuracy (0.68). The model yielded relatively high precision and f1 scores(0.96 and 0.76), but a lower recall score for no arrest made cases (0.62). But for arrest made cases showed inconsistent numbers (0.17, 0.74, 0.27). 
-Ultimately, the data in this dataset was not able to successfully predict arrest rate.
 
-
+Because the data were unable to predict arrest rates, we turned to neural networks to try to improve the accuracy. Two models were used to attempt to optimize accuracy. Both models are contained in the file ArrestNeuralNetwork. 
+The first model contained 2 hidden layers, each with 6 six units, and used relu activation. The model was able to achieve substantially higher accuracy (accuracy = 0.91, loss=0.28). 
+The second model was identical to the first except that the number of units was increased to 16 . The model was able to achieve slightly higher accuracy, albeit the differences were less than 0.01. Thus the scores rounded off the same (accuracy = 0.91, loss=0.28). 
+Still, since the second model achieved slightly higher accuracy, this model was retained and saved under the file name ArrestRateModel.h5.
 
 ### RQ5- 
 The second set of models attempted to predict violent versus non-violent crimes. These models are tested in the ipynb files ViolentCrimeLogisticRegression, ViolentCrimeAlt, and ViolentCrimeAlt2.The initial model included area name, victim age, victim sex, victim race, and address type as predictors. That model yielded low accuracy (0.62). The model yielded relatively inconsistent precision, recall, and f1 scores for both violent crime(0.58, 0.49, 0.53) and non-violent crime (0.68, 0.75, 0.71). 
@@ -102,23 +104,35 @@ Because of the low accuracy, 5 additional models were tested.
 - The final model used the model above but with resampled data.
 
 In the end, the best model was again the first model with resampled data. However, even that yielded lower than desired accuracy (0.64). The model yielded relatively inconsistent precision, recall, and f1 scores for both violent crime(0.54, 0.68, 0.60) and non-violent crime (0.72, 0.59, 0.65). 
-Ultimately, the data in this dataset was not able to successfully predict violent crimes.
+
+
+Because the data were unable to predict violent crime rates, we turned to neural networks to try to improve the accuracy. Three models were used to attempt to optimize accuracy. Both models are contained in the file ViolentNeuralNetwork. 
+The first model contained 2 hidden layers, each with 6 six units, and used relu activation. The model was not able to achieve substantially higher accuracy (accuracy = 0.66, loss=0.61). 
+The second model added an additional sigmoid layer and the number of units was increased to 50 . The model was able to achieve slightly higher accuracy, but still lacked sufficient accuracy (accuracy = 0.66, loss=0.60). 
+The third model was identical to the second, except the data was resampled before being tested. The model was less accurate than the previous 2 (accuracy = 0.64, loss=0.62)
+The fourth model added an additional relu layer before the sigmoid layer (thus making the hidden layers relu, relu, relu, sigmoid) and increased the number of units to 100. This model also did not approach recommended accuracy (accuracy = 0.65, loss=0.62).
+Because fit was still very low, the next attemped made a drastic jump. The fifth model added 2 additional relu layers before the sigmoid layer (thus making the hidden layers relu, relu, relu, relu, relu, sigmoid). The number of units for each layer varied from 3 to 100. This model was slightly improved from the last two models, but not the most accurate overall (accuracy= 0.66, loss=0.61). 
+The sixth model was very similar to the fifth in structure. But the number of units was increased in every layer. This model was showed lower accuracy than the previous model (accuracy = 0.65, loss = 0.63). 
+The best fitting model up to this point was model 2. The seventh is nearly identical to model 2 except the units were decreased to 35.This model was slightly (less than 0.01) more accurate than model 2 (accuracy=0.66, loss=0.60).
+The best fitting model up to this point was model 7. So, this model was rerun one final time as model eight with the epochs reduced to 35, where training accuracy had peaked in model 7. This model still did not reach the recommended cut off of 75% and was essentially as accurate as model 7 (accuracy=0.66, loss=0.60). 
+Unfortunately, after 6 attempts to reach recommended accuracy using logistic regression and 8 attempts to reach recommended accuracy for neural networks, we were unable to get this particular model to recommended standards for accuracy. Thus, the predictors in the dataset appear to lack strong enough relationships with the outcome to account for enough variance to reliably predict the outcome. 
+Despite not reaching recommended accuracy cutoffs, the best fitting model was still retained. Since the seventh model achieved slightly higher accuracy, this model was retained and saved under the file name ViolenceRateModel.h5.
+
 
 
 
 ## Discussion:
 In summary, we were able to describe some trends in the dataset that yielded potentially useful demographic and descriptive information about crime in Los Angeles. In addition, the inferential analyses performed did identify some individual predictors of both arrest rate and violent crime rate, most notably race and gender. 
-However, the data set simply did not contain enough data to successfully predict arrest rate or violent crime with adequate accuracy.
+Using a neural network we were able to successfully predict arrest outcome. Unfortunately, we were unable to reach recommended cutoffs for accuracy for our models predicting violent crime using either logistic regression or neural networks. 
 
 If research on this topic was to continue, we could see if there are any other crime data sets from that area that might have mergable data. In addition, it would be interesting to look attempt to look at predictive relationships of some of the recoded variables (e.g., crime type, address type) on a more granular level. It could also be interesting to see if a neural network approach might yield better accuracy compared to the logistic regression approach that we used. 
 
 
 
 ## Navigation:
--Data Analysis Folder- Contains all of the ipynb files used to calculate descriptive and inferential analyses as well as the data file contained in the "Resources" folder. 
--Data Files Folder- Contains the ipynb file used to pull in and clean the data set as well as a finished data set and a codebook that was used to help recode data. 
--Images Folder- Contains a Powerpoint with all of the images created externally from Tableau to be used in the presentation, most notably the inferential analysis and supervised learning images. There are also image files in here saved from that Powerpoint.
--Project Planning and Reports- Contains the project overview that was created at the beginning of the project.
+-Data Analysis Folder- Contains all of the ipynb files used to calculate descriptive and inferential analyses as well as the data file contained in the "Resources" folder. Also contains a folder with the retained neural network model files. 
+-Data Cleaning Folder- Contains the ipynb file used to pull in and clean the data set as well as a finished data set and a codebook that was used to help recode data. 
+-Project Presentation and Development Folder- Contains the project overview that was created at the beginning of the project. Also contains a Powerpoint with all of the images created externally from Tableau to be used in the presentation, most notably the inferential analysis and supervised learning images. There are also image files in here saved from that Powerpoint.
 -Tableau Files Folder- Contains the Tableau workbook that holds our visualizations and final presentation (in the form of a story). 
 
 
